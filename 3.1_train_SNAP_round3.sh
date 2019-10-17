@@ -5,13 +5,13 @@
 
 module unload xalt
 
-cd /fs/scratch/PAS1582/`whoami`
+cd /fs/scratch/PAS1582/osu8618/Annotation
 #mkdir snap
- 
-cd  snap 
+
+cd  snap
 mkdir round3
 cd round3
-export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe 
+export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe
 # export 'ALL' gene models from MAKER and rename to something meaningful
 singularity exec ../../maker_version2.sif /usr/local/bin/maker/bin/maker2zff -n -d ../../Almond_pred2.maker.output/Almond_pred2_master_datastore_index.log
 #rename the 'genome.ann' and 'genome.dna' files:

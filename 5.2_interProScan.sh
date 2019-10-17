@@ -5,14 +5,14 @@
 
 module unload xalt
 
-cd /fs/scratch/PAS1582/`whoami`
+cd /fs/scratch/PAS1582/osu8618/Annotation
 
 #######InterProScan: Search PfamA for protein domains in the predicted proteins
 #outputs to a .tsv file
 ../HCS7194_Files/Genome_Annotation//interproscan-5.34-73.0/interproscan.sh -appl PfamA -iprlookup -goterms -f tsv -i Scaffold_1.maker.proteins.renamed.func.blast.fasta -cpu 20
 
 #Update the MAKER generated GFF3 file with the InterProScan results using ipr_update_gff.
-singularity exec  maker_version2.sif /usr/local/bin/maker/bin/ipr_update_gff Almond_pred3.all.maker.noseq.func.blast.gff Scaffold_1.maker.proteins.renamed.func.blast.fasta.tsv > Almond_pred3.all.maker.noseq.func.blast.ipr.gff 
+singularity exec  maker_version2.sif /usr/local/bin/maker/bin/ipr_update_gff Almond_pred3.all.maker.noseq.func.blast.gff Scaffold_1.maker.proteins.renamed.func.blast.fasta.tsv > Almond_pred3.all.maker.noseq.func.blast.ipr.gff
 
 ####Get IPR report, for instance top 100 domains:
 #Obtain script here: https://github.com/mscampbell/Genome_annotation/blob/master/pfam_domain_report.pl

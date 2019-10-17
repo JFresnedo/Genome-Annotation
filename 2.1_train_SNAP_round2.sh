@@ -5,12 +5,12 @@
 
 module unload xalt
 
-cd /fs/scratch/PAS1582/`whoami`
+cd /fs/scratch/PAS1582/osu8618/Annotation
 #mkdir snap
-cd  snap 
+cd  snap
 mkdir round2
 cd round2
-export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe 
+export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe
 # export 'ALL' gene models from MAKER round 1 prediction
 singularity exec ../../maker_version2.sif /usr/local/bin/maker/bin/maker2zff -n -d ../../Almond_pred1.maker.output/Almond_pred1_master_datastore_index.log
 

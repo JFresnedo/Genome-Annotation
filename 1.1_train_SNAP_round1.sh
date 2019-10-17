@@ -5,19 +5,20 @@
 
 module unload xalt
 
-cd /fs/scratch/PAS1582/`whoami`
+cd /fs/scratch/PAS1582/osu8618/Annotation
 
 mkdir snap
- 
-cd  snap 
+
+cd  snap
 
 mkdir round1
 
 cd round1
 
-export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe 
+export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe
 
 # export 'ALL' gene models from MAKER
+export LC_ALL=C
 singularity exec ../../maker_version2.sif /usr/local/bin/maker/bin/maker2zff -n -d ../../Almond_BC_rnd1.maker.output/Almond_BC_rnd1_master_datastore_index.log
 
 ##Start Creating SNAP HHH
@@ -34,4 +35,4 @@ cd params
 forge ../export.ann ../export.dna > ../forge.log 2>&1
 cd ..
 # assembly the HMM classifier
-hmm-assembler.pl genome params > Almond_BC_rnd1.zff.hmm 
+hmm-assembler.pl genome params > Almond_BC_rnd1.zff.hmm

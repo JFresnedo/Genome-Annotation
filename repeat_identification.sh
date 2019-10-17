@@ -1,18 +1,16 @@
 #PBS -l walltime=24:00:00
 #PBS -l nodes=1:ppn=28
 #PBS -N repeat_anno
-#PBS -A PAS0107
+#PBS -A PAS1582
 
 module unload xalt
 
-cd /users/PAS0107/osu6702/project/annotation/annotation_class
+cd /fs/scratch/PAS1582/osu8618/Annotation
 
 mkdir Almond_repeatDB
-/users/PAS0107/osu6702/project/applications/RepeatModeler-open-1.0.11/BuildDatabase -name  Almond_repeatDB/Almond_repeat \
-  -engine ncbi Almond_scaffold1.fasta
-
-/users/PAS0107/osu6702/project/applications/RepeatModeler-open-1.0.11/RepeatModeler -pa 28 \
-  -engine ncbi -database Almond_repeatDB/Almond_repeat 2>&1 | tee repeatmodeler.log
+cp /fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/Almond_scaffold1.fasta .
+/users/PAS0107/osu6702/project/applications/RepeatModeler-open-1.0.11/BuildDatabase -name  Almond_repeatDB/Almond_repeat -engine ncbi Almond_scaffold1.fasta
+/users/PAS0107/osu6702/project/applications/RepeatModeler-open-1.0.11/RepeatModeler -pa 28 -engine ncbi -database Almond_repeatDB/Almond_repeat 2>&1 | tee repeatmodeler.log
 
 ###Mask the the genome:
 #note: the default species is human, change to plant?????

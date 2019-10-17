@@ -5,16 +5,16 @@
 
 module unload xalt
 
-cd /fs/scratch/PAS1582/`whoami`
+cd /fs/scratch/PAS1582/osu8618/Annotation
 
 mv maker_opts.training.ctl.round1 maker_opts.ctl
 
 export ZOE=/fs/scratch/PAS1582/HCS7194_Files/Genome_Annotation/bin/snap/Zoe # sh, bash, etc
-
+module load singularity
 singularity exec maker_version2.sif  /usr/local/bin/maker/bin/maker -base Almond_BC_rnd1  2>maker.error
 
 #combine all gff for each scaffold
-singularity exec maker_version2.sif /usr/local/bin/maker/bin/gff3_merge -d Almond_BC_rnd1.maker.output/Almond_BC_rnd1_master_datastore_index.log 
+singularity exec maker_version2.sif /usr/local/bin/maker/bin/gff3_merge -d Almond_BC_rnd1.maker.output/Almond_BC_rnd1_master_datastore_index.log
 
 # GFF w/o the sequences
 singularity exec maker_version2.sif /usr/local/bin/maker/bin/gff3_merge -n -s -d Almond_BC_rnd1.maker.output/Almond_BC_rnd1_master_datastore_index.log > Almond_BC_rnd1.all.noseq.gff
