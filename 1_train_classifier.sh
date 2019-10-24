@@ -5,7 +5,7 @@
 
 module unload xalt
 
-cd /fs/scratch/PAS1582/osu8618/Annotation
+cd /fs/scratch/PAS1582/osu8618/Annotation_Class
 
 mv maker_opts.training.ctl.round1 maker_opts.ctl
 
